@@ -13,7 +13,7 @@ Groupe Ananas 🍍 :
 - [Introduction](#introduction)
 - [Diagramme de classe - UML](#diagramme-de-classe---uml)
 - [Wireframes Desktop et Mobile](#wireframes-desktop-et-mobile)
-  - [Wireframes Dekstop](#wireframes-dekstop)
+  - [Wireframes Desktop](#wireframes-dekstop)
   - [Wireframes Mobile](#wireframes-mobile)
 ## Introduction
 
@@ -27,6 +27,6 @@ Ci dessous est présenté le diagramme de classe UML :
 ## Wireframes Desktop et Mobile
 
 [Lien vers Figma](https://www.figma.com/file/0mniBudedOXDnHA4qsGtnW/Ananas?node-id=24%3A40)
-### Wireframes Dekstop
+### Wireframes Desktop
 
 ### Wireframes Mobile
