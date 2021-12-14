@@ -1,0 +1,21 @@
+.scroll-container{
+    overflow-y: scroll;
+    height:70vh;
+    margin:10px;
+    border: 1px solid white;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+  }
+  
+  .scroll-container::-webkit-scrollbar-track {
+    background: #292D3E; /* color of the tracking area */
+    border: 3px solid white;
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb {
+    background-color: #F52D7E; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    /*border: 3px solid white; /* creates padding around scroll thumb */
+  }

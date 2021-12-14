@@ -47,21 +47,32 @@
 .rules-line{
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
 
 }
 
-h2{
-    padding:0;
-    margin:0;
-}
 
 .rules-header{
     text-align: right;
 }
-div.rules-header>div.line-2{
-    width:15vw;
+div.rules-line>div.line-2{
+    width:20vw;
+    margin-top:20px;
+}
+
+div.rules-line>h2{
+    padding:0;
+    margin:0;
+    margin-right:20px;
+    margin-top:5px;
+}
+
+div.rules-header>div.line-1{
+    width:80%;
+    margin-left:20%;
     margin-top:10px;
 }
+
 #main-title {
   font-size: 6rem;
   margin-left:3rem;
@@ -96,7 +107,7 @@ h1 span#text-game{
 @media screen and (min-width: 780px) {
   img {
     width: 30rem;
-    height: 15rem;
+    height: auto;
   }
 }
 

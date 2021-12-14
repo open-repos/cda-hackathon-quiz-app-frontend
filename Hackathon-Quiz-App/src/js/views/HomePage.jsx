@@ -1,15 +1,15 @@
 import React from "react";
 import logo from "../../assets/img-people.png";
 import "../../css/Home.css";
-import { useNavigate } from "react-router-dom"
-
+import { useNavigate } from "react-router-dom";
+import  RulesGame from "../components/RulesGame";
 function HomePage() {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="grid-container">
       <div className="grid-child-left">
-        <div className='title'>
+        <div className="title">
           <h1 id="main-title">
             <span>Quizz</span>
             <span className="br"></span>
@@ -25,18 +25,24 @@ function HomePage() {
 
       <div className="grid-child-right">
         <div className="rules-header">
-        <div className="line-1"></div>
-        <div className="rules-line"></div>
-        <h2>Règles du jeux</h2><div className="line-2"></div>
-        
+          <div className="line-1"></div>
+          <div className="rules-line">
+            <h2>Règles du jeux</h2>
+            <div className="line-2"></div>
+          </div>
         </div>
         <div className="rules-btn-container">
-        <ul>
-          <li>Règle 1:</li>
-          <li>Règle 2:</li>
-          <li>Règle 3:</li>
-        </ul>
-        <div className='btn-container'><button className="btn" onClick={() => navigate("/games",{state:{from:{pathname:"/home"}}})}>SUIVANT</button></div>
+          <RulesGame />
+          <div className="btn-container">
+            <button
+              className="btn"
+              onClick={() =>
+                navigate("/games", { state: { from: { pathname: "/home" } } })
+              }
+            >
+              SUIVANT
+            </button>
+          </div>
         </div>
       </div>
     </div>
