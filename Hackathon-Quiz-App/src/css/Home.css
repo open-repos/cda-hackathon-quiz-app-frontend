@@ -118,19 +118,3 @@ h1 span#text-game{
 #main-title {
   font-family: "MyFont";
 }
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-li {
-  padding-left: 1.3em;
-}
-li:before {
-  content: "\f135";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 800;
-  display: inline-block;
-  margin-left: -1.3em; /* same as padding-left set on li */
-  width: 1.3em; /* same as padding-left set on li */
-}

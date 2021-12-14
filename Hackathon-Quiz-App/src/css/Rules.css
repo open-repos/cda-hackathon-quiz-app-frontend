@@ -22,3 +22,21 @@
     border-radius: 20px; /* roundness of the scroll thumb */
     /*border: 3px solid white; /* creates padding around scroll thumb */
   }
+
+
+  ul {
+    list-style: none;
+    padding-left: 10px;
+  }
+  li {
+    padding-left: 1.3em;
+  }
+  li:before {
+    content: "\f135";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 800;
+    display: inline-block;
+    margin-left: -1.3em; /* same as padding-left set on li */
+    width: 1.3em; /* same as padding-left set on li */
+  }
+  
