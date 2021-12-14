@@ -10,6 +10,7 @@ import HomePage from "./views/HomePage";
 import GamesPage from "./views/GamesPage";
 import HistoricPage from "./views/HistoricPage";
 import ScorePage from "./views/ScorePage";
+import NicknamePage from "./views/NicknamePage";
 
 function App() {
   return (
@@ -24,9 +25,31 @@ function App() {
         <Routes>
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="/games" element={<RequireAuth><GamesPage /></RequireAuth>}></Route>
-          <Route path="/score" element={<RequireAuth><ScorePage /></RequireAuth>}></Route>
-          <Route path="/historic" element={<RequireAuth><HistoricPage /></RequireAuth>}></Route>
+          <Route path="enter-nickname" element={<NicknamePage />}></Route>
+          <Route
+            path="/games"
+            element={
+              <RequireAuth>
+                <GamesPage />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/score"
+            element={
+              <RequireAuth>
+                <ScorePage />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/historic"
+            element={
+              <RequireAuth>
+                <HistoricPage />
+              </RequireAuth>
+            }
+          ></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>
@@ -41,9 +64,8 @@ export const NotFound = () => {
     left: "50%",
     marginTop: "-50px",
     marginLeft: "-120px",
-    fontSize:"2rem",
-    fontWeight:"800",
-
+    fontSize: "2rem",
+    fontWeight: "800",
   };
   return <div style={style}>Not Page Found</div>;
 };

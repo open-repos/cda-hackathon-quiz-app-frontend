@@ -37,10 +37,10 @@ function HomePage() {
             <button
               className="btn"
               onClick={() =>
-                navigate("/games", { state: { from: { pathname: "/home" } } })
+                navigate("/enter-nickname", { state: { from: { pathname: "/home" } } })
               }
             >
-              SUIVANT
+              Commencer à jouer
             </button>
           </div>
         </div>
