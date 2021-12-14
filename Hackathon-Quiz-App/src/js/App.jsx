@@ -3,7 +3,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 //auth
-//import { RequireAuth } from "./utils/requireAuth";
+import { RequireAuth } from "./features/auth/requireAuth";
 
 //Pages
 import HomePage from "./views/HomePage";
@@ -24,9 +24,9 @@ function App() {
         <Routes>
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="/games" element={<GamesPage />}></Route>
-          <Route path="/score" element={<ScorePage />}></Route>
-          <Route path="/historic" element={<HistoricPage />}></Route>
+          <Route path="/games" element={<RequireAuth><GamesPage /></RequireAuth>}></Route>
+          <Route path="/score" element={<RequireAuth><ScorePage /></RequireAuth>}></Route>
+          <Route path="/historic" element={<RequireAuth><HistoricPage /></RequireAuth>}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>
