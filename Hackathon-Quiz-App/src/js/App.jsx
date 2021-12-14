@@ -1,29 +1,50 @@
-import { useState } from "react";
-import logo from "../assets/img-main.png";
-import "../css/App.css";
+import React from "react";
+
+import { Routes, Route, Navigate } from "react-router-dom";
+
+//auth
+//import { RequireAuth } from "./utils/requireAuth";
+
+//Pages
+import HomePage from "./views/HomePage";
+import GamesPage from "./views/GamesPage";
+import HistoricPage from "./views/HistoricPage";
+import ScorePage from "./views/ScorePage";
 
 function App() {
   return (
     <div>
-      <header>
+      {/* <header>
         <p>Home</p>
         <p>Games</p>
         <p>Historique</p>
-      </header>
-      <div className="general">
-        <main>
-          <h1 id="main-title">Quiz Game</h1>
-          <img src={logo} alt="image-bonhomme" class="img-accueil" />
-          <h2>Règles du jeux</h2>
-          <ul>
-            <li>Règle 1:</li>
-            <li>Règle 2:</li>
-            <li>Règle 3:</li>
-          </ul>
-        </main>
-      </div>
+      </header> */}
+      <header></header>
+      <main>
+        <Routes>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<Navigate replace to="/home" />} />
+          <Route path="/games" element={<GamesPage />}></Route>
+          <Route path="/score" element={<ScorePage />}></Route>
+          <Route path="/historic" element={<HistoricPage />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </main>
     </div>
   );
 }
 
+export const NotFound = () => {
+  const style = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    marginTop: "-50px",
+    marginLeft: "-120px",
+    fontSize:"2rem",
+    fontWeight:"800",
+
+  };
+  return <div style={style}>Not Page Found</div>;
+};
 export default App;

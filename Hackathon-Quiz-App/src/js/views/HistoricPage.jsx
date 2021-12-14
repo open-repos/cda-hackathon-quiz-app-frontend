@@ -1,6 +1,6 @@
 import React from 'react'
 
-function HistoricScorePage() {
+function HistoricPage() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function HistoricScorePage() {
     )
 }
 
-export default HistoricScorePage
+export default HistoricPage
