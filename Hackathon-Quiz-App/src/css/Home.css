@@ -7,17 +7,26 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  height:100vh;
+  grid-template-columns: 0.7fr 1.3fr;
   grid-gap: 20px;
 }
 
 
 .grid-child-right{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: flex-end; */
+    padding-top:4rem;
+    
+}
+.grid-child-left{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    text-align:center
+    justify-content: space-between;
+    align-content: flex-end;
+    padding-bottom:4rem;
 }
 
 
@@ -34,8 +43,31 @@
     width:20vw;
     background: white;
   }
+
+.rules-line{
+    display: flex;
+    flex-direction: row;
+
+}
+
+h2{
+    padding:0;
+    margin:0;
+}
+
+.rules-header{
+    text-align: right;
+}
+div.rules-header>div.line-2{
+    width:15vw;
+    margin-top:10px;
+}
 #main-title {
-  font-size: 4rem;
+  font-size: 6rem;
+  margin-left:3rem;
+}
+h1 span#text-game{
+    margin-left: 4rem;
 }
 
 .br {
@@ -43,9 +75,22 @@
     margin-bottom: -3rem;
 }
 
+.rules-btn-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:auto;
+}
+
+.btn-container{
+    text-align: center;
+}
 .btn{
     margin:40px;
     padding:3px 40px;
+    height:40px;
+    width:260px;
 }
 
 @media screen and (min-width: 780px) {

@@ -11,9 +11,9 @@ function HomePage() {
       <div className="grid-child-left">
         <div className='title'>
           <h1 id="main-title">
-            Quizz
+            <span>Quizz</span>
             <span className="br"></span>
-            Game
+            <span id="text-game">Game</span>
           </h1>
         </div>
         <div className="sec-img-lines">
@@ -24,16 +24,19 @@ function HomePage() {
       </div>
 
       <div className="grid-child-right">
-        <div>
-        <h2>Règles du jeux</h2>
+        <div className="rules-header">
+        <div className="line-1"></div>
+        <div className="rules-line"></div>
+        <h2>Règles du jeux</h2><div className="line-2"></div>
+        
         </div>
-        <div>
+        <div className="rules-btn-container">
         <ul>
           <li>Règle 1:</li>
           <li>Règle 2:</li>
           <li>Règle 3:</li>
         </ul>
-        <div><button className="btn" onClick={() => navigate("/games",{state:{from:{pathname:"/home"}}})}>SUIVANT</button></div>
+        <div className='btn-container'><button className="btn" onClick={() => navigate("/games",{state:{from:{pathname:"/home"}}})}>SUIVANT</button></div>
         </div>
       </div>
     </div>
