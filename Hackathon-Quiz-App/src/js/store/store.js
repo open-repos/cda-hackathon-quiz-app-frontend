@@ -2,13 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 
 //Services
-import { gameInfoApi } from "../services/gameInfoApi";
+import { gameApi } from "../services/gameApi";
 //Features
 import auth from "../features/auth/authSlice";
 
 export const store = configureStore({
   reducer: {
-    [gameInfoApi.reducerPath]: gameInfoApi.reducer,
+    [gameApi.reducerPath]: gameApi.reducer,
     auth,
   },
   // middleware: (getDefaultMiddleware) =>

@@ -15,10 +15,10 @@ export const RequireAuth = ({ children }) => {
   useEffect(() => {
     const currentPlayer = getLocalStorageItem("nickname");
     if (typeof(currentPlayer) === "string") {
-      console.log("currentPlayer", currentPlayer);
+      // console.log("currentPlayer", currentPlayer);
       dispatch(login(currentPlayer));
     } else {
-        console.log("currentPlayer (Not String)", currentPlayer);
+        // console.log("currentPlayer (Not String)", currentPlayer);
     }
   }, []);
 

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { gameInfoApi } from "../../services/gameInfoApi";
+import { gameApi } from "../../services/gameApi";
 
 import {
   setLocalStorageItem,
@@ -19,12 +19,12 @@ export const authSlice = createSlice({
     logout: () => {
       initialState, removeLocalStorageItem("nickname");
     },
-    login: (state, action) => {
-      console.log("action.payload", action);
+    login: (state,action) => {
+      // console.log("action.payload",action)
       state.nickname = action.payload;
       state.isAuthenticated = true;
-      setLocalStorageItem(state.nickname, "nickname");
-      console.log("state.isAuthenticated", state.isAuthenticated);
+      setLocalStorageItem(state.nickname , "nickname");
+      // console.log("state.isAuthenticated",state.isAuthenticated)
     },
   },
   // extraReducers: (builder) => {
