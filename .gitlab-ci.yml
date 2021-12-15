@@ -23,14 +23,14 @@ stages:
 build_parcel_master:
   stage: build
   script:
-    - cd ./
+    - cd ./Hackathon-Quiz-App/
     - npm install
     - node -v
     - npm run build
   artifacts:
     expire_in: 20 mins
     paths:
-      - ./dist
+      - ./Hackathon-Quiz-App/dist
   only:
     - main
 
@@ -42,9 +42,9 @@ deploy_main:
   script:
     - which rsync || ( apt update -y && apt install rsync -y )
     - ls -la
-    - ls -la ./
+    - ls -la ./Hackathon-Quiz-App/
     - /sbin/ip route|awk '/default/ { print $3 }'
-    - ls ./dist/
+    - ls ./Hackathon-Quiz-App/dist/
     - /usr/bin/rsync -r ./dist/ ${SERVEUR}:${CHEMIN}. --exclude-from="exclude.build"
   only:
     - main
