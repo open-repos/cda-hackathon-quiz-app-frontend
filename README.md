@@ -42,3 +42,5 @@ Lien vers l'application : https://quizz-game.andriacapai.com
 Lien vers l'api : https://api.quizz-game.andriacapai.com/v1/
 
 Mise en place de l'intégration continue avec gitlab.
+
+⚠️ Modification des permission de tout le dossier quizz-game.andriacapai.com ainsi que des sous dossiers (dans notre cas assets) .
