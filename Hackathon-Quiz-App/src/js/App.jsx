@@ -12,14 +12,11 @@ import HistoricPage from "./views/HistoricPage";
 import ScorePage from "./views/ScorePage";
 import NicknamePage from "./views/NicknamePage";
 
+
 function App() {
+
   return (
     <div>
-      {/* <header>
-        <p>Home</p>
-        <p>Games</p>
-        <p>Historique</p>
-      </header> */}
       <header></header>
       <main>
         <Routes>
@@ -67,6 +64,11 @@ export const NotFound = () => {
     fontSize: "2rem",
     fontWeight: "800",
   };
-  return <div style={style}>Not Page Found</div>;
+  const bgPage ={
+    height:"100vh",
+    width:"100vw",
+    background: "linear-gradient(157.89deg, #292D3E 62.84%, #F52D7E 92.29%)"
+  }
+  return(<div style={bgPage}><div style={style}>Not Page Found</div></div>);
 };
 export default App;

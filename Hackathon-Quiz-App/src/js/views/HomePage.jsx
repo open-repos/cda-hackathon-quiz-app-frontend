@@ -3,19 +3,16 @@ import logo from "../../assets/img-people.png";
 import "../../css/Home.css";
 import { useNavigate } from "react-router-dom";
 import  RulesGame from "../components/RulesGame";
+import BackGroundOne from "../components/BackGroundOne"
+import Title from "../components/Title"
 function HomePage() {
   const navigate = useNavigate();
 
   return (
+    <BackGroundOne>
     <div className="grid-container">
-      <div className="grid-child-left">
-        <div className="title">
-          <h1 id="main-title">
-            <span>Quizz</span>
-            <span className="br"></span>
-            <span id="text-game">Game</span>
-          </h1>
-        </div>
+      <div className="grid-child-left pg-accueil">
+        <Title />
         <div className="sec-img-lines">
           <img src={logo} alt="image-people" className="img-accueil" />
           <div className="line-1"></div>
@@ -46,6 +43,7 @@ function HomePage() {
         </div>
       </div>
     </div>
+    </BackGroundOne>
   );
 }
 

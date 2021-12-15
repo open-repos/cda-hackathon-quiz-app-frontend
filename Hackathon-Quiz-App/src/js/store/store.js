@@ -11,9 +11,9 @@ export const store = configureStore({
     [gameInfoApi.reducerPath]: gameInfoApi.reducer,
     auth,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(
-      gameInfoApi.middleware,
-      logger
-    ), // A ajouter peopleApi.middleware
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat(
+  //     gameInfoApi.middleware,
+  //     logger
+  //   ), // A ajouter peopleApi.middleware
 });

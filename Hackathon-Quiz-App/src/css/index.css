@@ -8,7 +8,7 @@
 body {
   margin: 0;
   height:100%;
-  background: linear-gradient(240.23deg, #292D3E 68.45%, #F52D7E 102.75%);
+  /* background: linear-gradient(240.23deg, #292D3E 68.45%, #F52D7E 102.75%); */
   /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;*/
@@ -30,4 +30,29 @@ button {
   text-transform: uppercase;
   border-radius: 15px;
   font-size:1.3rem;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  background:#696c78;
+  font-family: 'IBM Plex Mono';
+  border-radius: 15px;
+  color:white;
+  border: none;
+  outline-color: #F52D7E;
+}
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
 }

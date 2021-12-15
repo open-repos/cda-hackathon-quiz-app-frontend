@@ -1,0 +1,14 @@
+#main-title{
+    font-size: 6rem;
+    margin-left:3rem;
+    font-family: "MyFont";
+    margin-top:-5px;
+  }
+  
+  .main-title{
+    margin-top:-10px;
+  }
+
+  h1 span#text-game{
+    margin-left: 4rem;
+}
