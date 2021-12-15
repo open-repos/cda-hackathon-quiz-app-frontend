@@ -1,0 +1,12 @@
+.category {
+  display: flex;
+  width: 865px;
+}
+
+.people {
+  border-radius: 20px;
+  border:2px solid #c4c4c4;
+  width: 255px;
+  height: 346px;
+  margin-left: 20px;
+}
