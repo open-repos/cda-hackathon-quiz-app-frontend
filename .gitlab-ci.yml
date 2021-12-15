@@ -45,6 +45,6 @@ deploy_main:
     - ls -la ./Hackathon-Quiz-App/
     - /sbin/ip route|awk '/default/ { print $3 }'
     - ls ./Hackathon-Quiz-App/dist/
-    - /usr/bin/rsync -r ./dist/ ${SERVEUR}:${CHEMIN}. --exclude-from="exclude.build"
+    - /usr/bin/rsync -r ./Hackathon-Quiz-App/dist/ ${SERVEUR}:${CHEMIN}. --exclude-from="exclude.build"
   only:
     - main
