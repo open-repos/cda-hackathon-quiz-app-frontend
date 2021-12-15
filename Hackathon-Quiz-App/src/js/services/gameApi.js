@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_BASE_URL = "http://localhost:4200/api"; // Remplacer url de notre API
+const API_BASE_URL = import.meta.env.API_BASE_URL || "https://api.quizz-app.andriacapai.com/v1"; // Remplacer url de notre API
 
 const baseQuery = fetchBaseQuery({
   baseUrl: API_BASE_URL,
