@@ -6,7 +6,7 @@ function Title() {
       <h1 id="main-title">
         <span>Quizz</span>
         <span className="br"></span>
-        <span id="text-game">Game</span>
+        <span id="text-game">Games</span>
       </h1>
     </div>
   );
