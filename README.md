@@ -13,8 +13,9 @@ Groupe Ananas 🍍 :
 - [Introduction](#introduction)
 - [Diagramme de classe - UML](#diagramme-de-classe---uml)
 - [Wireframes Desktop et Mobile](#wireframes-desktop-et-mobile)
-  - [Wireframes Desktop](#wireframes-dekstop)
+  - [Wireframes Desktop](#wireframes-desktop)
   - [Wireframes Mobile](#wireframes-mobile)
+  - [DevOps](#devops)
 ## Introduction
 
 Ce fichier présentera un récapitulatif du travail réalisé pour le projet Hackaton.
@@ -29,4 +30,15 @@ Ci dessous est présenté le diagramme de classe UML :
 [Lien vers Figma](https://www.figma.com/file/0mniBudedOXDnHA4qsGtnW/Ananas?node-id=24%3A40)
 ### Wireframes Desktop
 
+[Lien vers Figma](https://www.figma.com/file/0mniBudedOXDnHA4qsGtnW/Ananas?node-id=24%3A40)
 ### Wireframes Mobile
+
+[Lien vers Figma](https://www.figma.com/file/0mniBudedOXDnHA4qsGtnW/Ananas?node-id=24%3A40)
+
+### DevOps 
+
+Lien vers l'application : https://quizz-game.andriacapai.com
+
+Lien vers l'api : https://api.quizz-game.andriacapai.com/v1/
+
+Mise en place de l'intégration continue avec gitlab.
