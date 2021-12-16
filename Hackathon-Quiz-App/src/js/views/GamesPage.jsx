@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { categoryChosen } from "../features/game/gameSlice";
 import api from "../utils/api";
 import { getLocalStorageItem } from "../utils/localstorage";
+import Timer from "../components/Timer"
+import BackGroundOne from "../components/BackGroundOne"
 
 function GamesPage() {
   const dispatch = useDispatch();
@@ -61,7 +63,8 @@ function GamesPage() {
   };
 
   return (
-    <div>
+    <BackGroundOne>
+    <div >
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -72,7 +75,10 @@ function GamesPage() {
         />
         <button type="submit">Envoyer la requête</button>
       </form>
+
+      <Timer delayAccordingToMode={60} />
     </div>
+    </BackGroundOne>
   );
 }
 
