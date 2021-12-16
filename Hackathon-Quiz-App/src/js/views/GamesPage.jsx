@@ -1,38 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { tableauQuestions } from "../models/tableauQuestions";
-import { useDispatch,useSelector } from "react-redux";
-import { modeGameChoosen } from "../features/game/gameSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { categoryChosen } from "../features/game/gameSlice";
 import api from "../utils/api";
 import { getLocalStorageItem } from "../utils/localstorage";
-
 
 function GamesPage() {
   const dispatch = useDispatch();
   const [category, setCategory] = useState("");
-  const gameStore = useSelector((state) => state.game)
-  
-  
-  async function fetchQuestions() {
+  const gameStore = useSelector((state) => state.game);
 
-    let body = ""
-    console.log("gameInfoStore",gameStore.currentMode)
-    console.log("category:",category)
-    if (category !== "" && gameStore.currentMode !== category ){
+  async function fetchQuestions() {
+    let body = "";
+    console.log(
+      "getLocalStorageItem(currentCategory)",
+      getLocalStorageItem("currentCategory")
+    );
+    console.log("category:", category);
+    if (category !== "" && getLocalStorageItem("currentCategory") !== category) {
       body = category;
-    } else if (category === "" && gameStore.currentMode !== null) {
-      body = gameStore.currentMode
-    } else{
-      return
+    } else if (
+      category === "" &&
+      (getLocalStorageItem("currentCategory") !== null ||
+        getLocalStorageItem("currentCategory") !== undefined)
+    ) {
+      body = getLocalStorageItem("currentCategory");
+    } else {
+      return;
     }
 
-    console.log("body:", body)
+    console.log("body:", body);
     try {
       const result = await api.get(`/questions/${body}`);
       if (result.status === 200) {
         console.log(result);
         if (result.data.data !== false) {
-          console.log("result.data.data[0].categoryId:",result.data.data[0].categoryId)
-          dispatch(modeGameChoosen(result.data.data[0].categoryId));
+          console.log(
+            "result.data.data[0].categoryId:",
+            result.data.data[0].categoryId
+          );
+          dispatch(categoryChosen(result.data.data[0].categoryId));
         }
       }
     } catch (err) {

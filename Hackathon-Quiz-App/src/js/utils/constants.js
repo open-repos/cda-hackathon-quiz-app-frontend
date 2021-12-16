@@ -7,4 +7,4 @@
 
 // console.log(import.meta.env.API_BASE_URL);
 
-export const API_BASE_URL = import.meta.env.API_BASE_URL || "http://localhost:4200/v1/" //'https://api.quizz-game.andriacapai.com/v1/'
+export const API_BASE_URL = import.meta.env.API_BASE_URL || 'https://api.quizz-game.andriacapai.com/v1/' //"http://localhost:4200/v1/" 

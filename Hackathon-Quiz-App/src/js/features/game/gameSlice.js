@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   gameInfo: gameInfoModel,
+  currentCategory:null,
   currentMode:null,
   currentQuestion:null,
   currentCounterTime:null,
@@ -19,11 +20,26 @@ export const gameSlice = createSlice({
   initialState,
   reducers: {
     leaveGame: () => {initialState,removeLocalStorageItem("gameInfo")},
-    modeGameChoosen: (state,action) => {
+    categoryChosen: (state,action) => {
       state.gameInfo.game.categoryId = action.payload;
-      state.currentMode = action.payload;
       setLocalStorageItem(state.gameInfo, "gameInfo");
-      setLocalStorageItem(state.currentMode, "currentMode");
+      let categoryChoosen = '';
+      console.log(typeof(action.payload));
+      switch(action.payload){
+        case 1:
+          categoryChoosen="Front-end";
+          break
+        case 2:
+          categoryChoosen="Back-end";
+          break
+        case 3:
+          categoryChoosen="DevOps";
+          break
+        default:
+          categoryChoosen =null;
+      }
+      state.currentCategory = categoryChoosen;
+      setLocalStorageItem(categoryChoosen, "currentCategory");
     },
   },
   // extraReducers: (builder) => {
@@ -74,7 +90,7 @@ export const gameSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { leaveGame, modeGameChoosen } =
+export const { leaveGame, categoryChosen } =
   gameSlice.actions;
 
 export default gameSlice.reducer;
