@@ -10,7 +10,7 @@ import HomePage from "./views/HomePage";
 import GamesPage from "./views/GamesPage";
 import HistoricPage from "./views/HistoricPage";
 import ScorePage from "./views/ScorePage";
-import NicknamePage from "./views/NicknamePage";
+// import NicknamePage from "./views/NicknamePage";
 
 
 function App() {
@@ -22,13 +22,11 @@ function App() {
         <Routes>
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="enter-nickname" element={<NicknamePage />}></Route>
+          {/* <Route path="enter-nickname" element={<NicknamePage />}></Route> */}
           <Route
             path="/games"
             element={
-              <RequireAuth>
                 <GamesPage />
-              </RequireAuth>
             }
           ></Route>
           <Route

@@ -34,7 +34,7 @@ function HomePage() {
             <button
               className="btn"
               onClick={() =>
-                navigate("/enter-nickname", { state: { from: { pathname: "/home" } } })
+                navigate("/games", { state: { from: { pathname: "/home" } } })
               }
             >
               Commencer à jouer

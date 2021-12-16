@@ -1,7 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import "../../css/CategoryQuestion.css";
 
+
+import { useDispatch, useSelector } from "react-redux";
+import { categoryChosen } from "../features/game/gameSlice";
+import api from "../utils/api";
+import { getLocalStorageItem } from "../utils/localstorage";
+
 function CategoryQuestion() {
+  const dispatch = useDispatch();
+  const [category, setCategory] = useState("");
+  const gameStore = useSelector((state) => state.game);
+
   const [changeImageBack, setChangeImageBack] = useState(false);
   const [changeImageFront, setChangeImageFront] = useState(false);
   const [changeImageDevops, setChangeImageDevops] = useState(false);
@@ -21,8 +31,8 @@ function CategoryQuestion() {
 
   const imageSelected = (category) => {
     console.log(category);
-
-    if (category === "devops") {
+    setCategory(category)
+    if (category === "DevOps") {
       setChangeImageDevops(true);
       setChangeImageBack(false);
       setChangeImageFront(false);
@@ -33,7 +43,7 @@ function CategoryQuestion() {
       setImageUnselectedFront("/src/assets/quizzGame-front.png");
       setImageUnselectedBack("/src/assets/quizzGame-back.png");
     }
-    if (category === "front") {
+    if (category === "Front-end") {
       setChangeImageFront(true);
       setChangeImageBack(false);
       setChangeImageDevops(false);
@@ -44,7 +54,7 @@ function CategoryQuestion() {
       setImageUnselectedDevops("/src/assets/quizzGame_devops.png");
       setImageUnselectedBack("/src/assets/quizzGame-back.png");
     }
-    if (category === "back") {
+    if (category === "Back-end") {
       setChangeImageBack(true);
       setChangeImageFront(false);
       setChangeImageDevops(false);
@@ -57,13 +67,66 @@ function CategoryQuestion() {
     }
   };
 
+
+
+  async function fetchQuestions() {
+    let body = "";
+    console.log(
+      "getLocalStorageItem(currentCategory)",
+      getLocalStorageItem("currentCategory")
+    );
+    console.log("category:", category);
+    if (category !== "" && getLocalStorageItem("currentCategory") !== category) {
+      body = category;
+    } else if (
+      category === "" &&
+      (getLocalStorageItem("currentCategory") !== null ||
+        getLocalStorageItem("currentCategory") !== undefined)
+    ) {
+      body = getLocalStorageItem("currentCategory");
+    } else {
+      return;
+    }
+
+    console.log("body:", body);
+    try {
+      const result = await api.get(`/questions/${body}`);
+      if (result.status === 200) {
+        console.log(result);
+        if (result.data.data !== false) {
+          console.log(
+            "result.data.data[0].categoryId:",
+            result.data.data[0].categoryId
+          );
+          dispatch(categoryChosen(result.data.data[0].categoryId));
+        }
+      }
+    } catch (err) {
+      console.log(`Erreur lors de la requête : /questions/${body}`);
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    fetchQuestions();
+  };
+
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+
+  // const handleChange = (event) => {
+  //   setCategory(event.target.value);
+  // };
+
+
   return (
     <div className="category">
       <h2>SELECTIONNE LE THEME DE TES QUESTIONS</h2>
       <div className="img-btn">
         <div className="category-img">
           <img
-            onClick={() => imageSelected("devops")}
+            onClick={() => imageSelected("DevOps")}
             src={imageUnselectedDevops}
             alt="devops-people"
             className="people"
@@ -71,20 +134,20 @@ function CategoryQuestion() {
           />
           <img
             src={imageUnselectedFront}
-            onClick={() => imageSelected("front")}
+            onClick={() => imageSelected("Front-end")}
             alt="front-people"
             className="people"
             style={{ border: borderStyleFront }}
           />
           <img
             src={imageUnselectedBack}
-            onClick={() => imageSelected("back")}
+            onClick={() => imageSelected("Back-end")}
             alt="back-people"
             className="people"
             style={{ border: borderStyleBack }}
           />
         </div>
-        <button className="btn">Valider</button>
+        <button className="btn" onClick={handleSubmit}>Valider</button>
       </div>
     </div>
   );

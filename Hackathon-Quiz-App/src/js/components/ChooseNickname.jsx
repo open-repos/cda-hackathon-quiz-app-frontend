@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import logo from "../../assets/img-people.png";
-import "../../css/NickNamePage.css";
+import "../../css/ChooseNickname.css";
 import { useNavigate,useLocation } from "react-router-dom";
-import BackGroundTwo from "../components/BackGroundTwo";
-import Title from "../components/Title";
+import BackGroundTwo from "./BackGroundTwo";
+import Title from "./Title";
 import { useDispatch } from "react-redux";
 import { login } from "../features/auth/authSlice";
 
 
-function NicknamePage() {
+function ChooseNickname() {
   const dispatch = useDispatch();
   const [nickname, setNickname] = useState("");
 
@@ -22,7 +22,8 @@ function NicknamePage() {
     console.log('location',location)
     console.log('from location', from)
     dispatch(login(nickname.toLowerCase()));
-    navigate("/games", { state: { from: { pathname: from } } })
+    window.location.reload()
+    // navigate("/games", { state: { from: { pathname: from } } })
   };
 
 
@@ -70,4 +71,4 @@ function NicknamePage() {
   );
 }
 
-export default NicknamePage;
+export default ChooseNickname;
