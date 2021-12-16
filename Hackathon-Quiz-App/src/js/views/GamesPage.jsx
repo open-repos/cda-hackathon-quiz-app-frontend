@@ -128,7 +128,7 @@ const randomWrongAnswers = (items) => {
   return items[Math.floor(Math.random() * items.length)];
 };
 
-
+export default GamesPage;
 // import React from "react";
 // import { useGetQuestionsQuery } from "../services/gameApi";
 
