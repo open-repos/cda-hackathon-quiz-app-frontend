@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../../css/Question.css"
-import data from "../../../data/question.json"
+import "../../css/MyHistory.css"
 
-export default function Question() {
+export default function History() {
 
   const App = () => {
-    const [question, setQuestion] = useState('');
+    const [myparty, setMyparty] = useState('');
 
     useEffect(() => {
       const api = "https://api.quizz-app.andriacapai.com/v1/history"
@@ -14,8 +13,8 @@ export default function Question() {
         try {
           const response = await fetch(api);
           const json = await response.json();
-          console.log(json.question);
-          setAdvice(json.question);
+          console.log(json.myparty);
+          setMyparty(json.myparty);
         } catch (error) {
           console.log("error", error);
         }
@@ -26,7 +25,7 @@ export default function Question() {
 
     return (
       <Wrapper>
-        <span id="main-question"> {data[0].question} </span>
+        <span id="main-qmyparty"> {data[0].myparty} </span>
       </Wrapper>
     );
   }
