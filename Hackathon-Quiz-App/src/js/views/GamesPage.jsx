@@ -8,16 +8,15 @@ import BackgroundThree from "../components/BackgroundThree";
 import CategoryQuestion from "../components/CategoryQuestion";
 
 function GamesPage() {
-  const data = useGetQuestionsQuery("DevOps");
-  console.log(data);
+  // const data = useGetQuestionsQuery("DevOps");
+  // console.log(data);
 
   return (
     <BackgroundThree>
       <div className="grid-container">
         <div className="grid-child-left">
           <Title />
-          <h2>SELECTIONNE LE THEME DE TES QUESTIONS</h2>
-          {/* <CategoryQuestion /> */}
+          <CategoryQuestion />
           <div className="lines-left">
             <div className="line-1"></div>
             <div className="line-2"></div>

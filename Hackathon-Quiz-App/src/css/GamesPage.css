@@ -1,10 +1,13 @@
+#main-title {
+  padding-top: 4rem;
+  font-size: 60px;
+}
 .grid-container {
   display: grid;
   height: 100vh;
   grid-template-columns: 0.7fr 1.3fr;
   grid-gap: 20px;
 }
-
 .grid-child-right {
   padding-top: 4rem;
   display: flex;
@@ -39,14 +42,14 @@ div.lines-right > div.line-2 {
   margin-top: 30px;
   margin-left: 60%;
 }
-div.lines-right> div.line-1 {
+div.lines-right > div.line-1 {
   height: 2px;
   width: 70%;
   margin-left: 30%;
   margin-top: 30px;
 }
 
-h2{
+h2 {
   font-size: 14px;
   text-align: center;
 }

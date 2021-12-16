@@ -1,7 +1,18 @@
-.category {
+.category{
   display: flex;
-  width: 865px;
 }
+
+.img-btn {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+  width: 100vw;
+}
+/* 
+h2{
+justify-content: flex-start;
+} */
 
 .people {
   border-radius: 20px;
