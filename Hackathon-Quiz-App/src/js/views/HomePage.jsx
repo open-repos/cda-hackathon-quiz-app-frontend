@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import  RulesGame from "../components/RulesGame";
 import BackGroundOne from "../components/BackGroundOne"
 import Title from "../components/Title"
+
 function HomePage() {
   const navigate = useNavigate();
 
