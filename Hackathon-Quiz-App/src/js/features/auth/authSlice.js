@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { gameApi } from "../../services/gameApi";
+// import { gameApi } from "../../services/gameApi";
 
 import {
   setLocalStorageItem,

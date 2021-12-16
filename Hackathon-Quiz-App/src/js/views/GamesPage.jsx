@@ -1,17 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { useGetQuestionsQuery } from "../services/gameApi";
 import { tableauQuestions } from "../models/tableauQuestions";
-import { useDispatch } from "react-redux";
-import { modGameChoosen } from "../features/game/gameSlice";
+import { useDispatch,useSelector } from "react-redux";
+import { modeGameChoosen } from "../features/game/gameSlice";
+import api from "../utils/api";
+import { getLocalStorageItem } from "../utils/localstorage";
+
 
 function GamesPage() {
-  // const data = useGetQuestionsQuery('DevOps')
-  // console.log(data);
   const dispatch = useDispatch();
-  const [tableQuestions, setTableQuestions] = useState(undefined);
   const [category, setCategory] = useState("");
-  const [categoryToSubmit, setCategoryToSubmit] = useState("");
-  const data = useGetQuestionsQuery(categoryToSubmit);
+  const gameStore = useSelector((state) => state.game)
+  
+  
+  async function fetchQuestions() {
+
+    let body = ""
+    console.log("gameInfoStore",gameStore.currentMode)
+    console.log("category:",category)
+    if (category !== "" && gameStore.currentMode !== category ){
+      body = category;
+    } else if (category === "" && gameStore.currentMode !== null) {
+      body = gameStore.currentMode
+    } else{
+      return
+    }
+
+    console.log("body:", body)
+    try {
+      const result = await api.get(`/questions/${body}`);
+      if (result.status === 200) {
+        console.log(result);
+        if (result.data.data !== false) {
+          console.log("result.data.data[0].categoryId:",result.data.data[0].categoryId)
+          dispatch(modeGameChoosen(result.data.data[0].categoryId));
+        }
+      }
+    } catch (err) {
+      console.log(`Erreur lors de la requête : /questions/${body}`);
+    }
+  }
+
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
 
   const handleChange = (event) => {
     setCategory(event.target.value);
@@ -19,26 +50,8 @@ function GamesPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let body = category;
-    console.log("body", body);
-    setCategoryToSubmit(body);
-    // setTableQuestions(data);
-    console.log("data",data)
-    console.log("data.data?.data", data.data?.data);
-    // let mode = "Carre"
-    console.log(data.data?.data);
-    if (tableQuestions !== null && tableQuestions !== undefined) {
-      console.log('table undefined again')
-      dispatch(modGameChoosen(tableQuestions[0].categoryId));
-    }
-    // questionInfo(mode,tableQuestions)
+    fetchQuestions();
   };
-
-  // useEffect(() => {
-  //   const game = useSelector((state) => state.game);
-  //  console.log("state de game", game)
-
-  // }, []);
 
   return (
     <div>

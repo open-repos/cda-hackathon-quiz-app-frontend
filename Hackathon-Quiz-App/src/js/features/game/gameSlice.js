@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { gameApi } from "../../services/gameApi";
+// import { gameApi } from "../../services/gameApi";
 import { gameInfoModel } from "../../models/gameInfoModel";
 import {
     removeLocalStorageItem,
@@ -8,6 +8,9 @@ import {
 
 const initialState = {
   gameInfo: gameInfoModel,
+  currentMode:null,
+  currentQuestion:null,
+  currentCounterTime:null,
   isLoading: false,
 };
 
@@ -16,62 +19,62 @@ export const gameSlice = createSlice({
   initialState,
   reducers: {
     leaveGame: () => {initialState,removeLocalStorageItem("gameInfo")},
-    modGameChoosen: (state,action) => {
-      // console.log("action.payload",action)
+    modeGameChoosen: (state,action) => {
       state.gameInfo.game.categoryId = action.payload;
+      state.currentMode = action.payload;
       setLocalStorageItem(state.gameInfo, "gameInfo");
-      // console.log("state.isAuthenticated",state.isAuthenticated)
+      setLocalStorageItem(state.currentMode, "currentMode");
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addMatcher(
-        gameApi.endpoints.getQuestions.matchPending,
-        (state, action) => {
-          console.log("pending", action);
-          state.isLoading = true;
-        }
-      )
-      .addMatcher(
-        gameApi.endpoints.getQuestions.matchFulfilled,
-        (state, action) => {
-          console.log("fulfilled", action);
-          state.isLoading = false;
-          setLocalStorageItem(action.payload.gameInfo, "gameInfo");
-        }
-      )
-      .addMatcher(gameApi.endpoints.getQuestions.matchRejected, (state, action) => {
-        console.log("rejected", action);
-        state.isLoading = false;
-        state = initialState;
-      })
-      .addMatcher(
-        gameApi.endpoints.getHistory.matchPending,
-        (state, action) => {
-          console.log("pending fetching current user", action);
-          state.isLoading = true;
-        }
-      )
-      .addMatcher(
-        gameApi.endpoints.getHistory.matchFulfilled,
-        (state, action) => {
-          console.log("fullfilled fetching current user", action);
-          state.isLoading = false;
-          setLocalStorageItem(action.payload.historyInfo, "historyInfo");
-        }
-      )
-      .addMatcher(
-        gameApi.endpoints.getHistory.matchRejected,
-        (state, action) => {
-          console.log("rejected fetching current user", action);
-          state = initialState;
-        }
-      )
-  },
+  // extraReducers: (builder) => {
+  //   builder
+  //     .addMatcher(
+  //       gameApi.endpoints.getQuestions.matchPending,
+  //       (state, action) => {
+  //         console.log("pending", action);
+  //         state.isLoading = true;
+  //       }
+  //     )
+  //     .addMatcher(
+  //       gameApi.endpoints.getQuestions.matchFulfilled,
+  //       (state, action) => {
+  //         console.log("fulfilled", action);
+  //         state.isLoading = false;
+  //         setLocalStorageItem(action.payload.gameInfo, "gameInfo");
+  //       }
+  //     )
+  //     .addMatcher(gameApi.endpoints.getQuestions.matchRejected, (state, action) => {
+  //       console.log("rejected", action);
+  //       state.isLoading = false;
+  //       state = initialState;
+  //     })
+  //     .addMatcher(
+  //       gameApi.endpoints.getHistory.matchPending,
+  //       (state, action) => {
+  //         console.log("pending fetching current user", action);
+  //         state.isLoading = true;
+  //       }
+  //     )
+  //     .addMatcher(
+  //       gameApi.endpoints.getHistory.matchFulfilled,
+  //       (state, action) => {
+  //         console.log("fullfilled fetching current user", action);
+  //         state.isLoading = false;
+  //         setLocalStorageItem(action.payload.historyInfo, "historyInfo");
+  //       }
+  //     )
+  //     .addMatcher(
+  //       gameApi.endpoints.getHistory.matchRejected,
+  //       (state, action) => {
+  //         console.log("rejected fetching current user", action);
+  //         state = initialState;
+  //       }
+  //     )
+  // },
 });
 
 // Action creators are generated for each case reducer function
-export const { leaveGame, modGameChoosen } =
+export const { leaveGame, modeGameChoosen } =
   gameSlice.actions;
 
 export default gameSlice.reducer;
