@@ -5,15 +5,19 @@ import logger from "redux-logger";
 import { gameApi } from "../services/gameApi";
 //Features
 import auth from "../features/auth/authSlice";
+import game from "../features/game/gameSlice"
+
+const reducer = {
+  [gameApi.reducerPath]: gameApi.reducer,
+  auth:auth,
+  game:game,
+}
 
 export const store = configureStore({
-  reducer: {
-    [gameApi.reducerPath]: gameApi.reducer,
-    auth,
-  },
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(
-  //     gameInfoApi.middleware,
-  //     logger
-  //   ), // A ajouter peopleApi.middleware
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(
+      gameApi.middleware,
+      logger
+    ), // A ajouter peopleApi.middleware
 });
