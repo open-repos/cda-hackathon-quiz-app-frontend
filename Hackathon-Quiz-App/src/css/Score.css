@@ -1,0 +1,134 @@
+@font-face {
+  font-family: "MyFont";
+  src: local("MyFont"), url(../fonts/squids-game-font.otf) format("opentype");
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+}
+
+.grid-container {
+  display: grid;
+  /* height:100vh; */
+  grid-template-columns: 0.7fr 1.3fr;
+  grid-gap: 20px;
+}
+
+
+.grid-child-right.pg-acceuil{
+    padding-top:0rem;
+    
+}
+.grid-child-left.pg-acceuil{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-content: flex-start; */
+    padding-bottom:2rem;
+}
+
+
+.line-1 {
+    height: 1px;
+    background: white;
+    margin-top:-10px;
+    width:40vw;
+  }
+
+  .line-2 {
+    height: 1px;
+    margin-top:20px;
+    width:20vw;
+    background: black;
+  }
+
+.rules-line{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+
+
+.rules-header{
+    text-align: right;
+}
+
+div.rules-line>h2{
+    padding:0;
+    margin:0;
+    margin-right:10vw;
+    margin-top:5px;
+}
+
+div.rules-line>div.line-2{
+    width:40%;
+    margin-top:20px;
+}
+div.rules-header>div.line-1{
+    width:100%;
+    margin-left:0;
+    margin-top:10px;
+}
+
+.br {
+    display: block;
+    margin-bottom: -3rem;
+}
+
+.rules-btn-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:auto;
+}
+
+.btn-container{
+    text-align: center;
+    
+    
+}
+
+.btn-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.btn-container-actions {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.btn-container-actions>input {
+  width: auto !important;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+
+
+.btn-container-actions>.btn{
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding:3px 40px;
+}
+
+@media screen and (min-width: 780px) {
+  img.img-accueil {
+    width: 30rem;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 779px) {
+  img.img-accueil {
+    width: 80%;
+    height: auto;
+    padding: 0 10%;
+  }
+}
