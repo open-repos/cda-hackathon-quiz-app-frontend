@@ -1,0 +1,23 @@
+.category{
+  display: flex;
+}
+
+.img-btn {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+  width: 100vw;
+}
+/* 
+h2{
+justify-content: flex-start;
+} */
+
+.people {
+  border-radius: 20px;
+  border:2px solid #c4c4c4;
+  width: 255px;
+  height: 346px;
+  margin-left: 20px;
+}
