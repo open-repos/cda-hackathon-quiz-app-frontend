@@ -1,19 +1,30 @@
 import React, { useEffect, useState } from "react";
 import "../../css/Myhistory.css"
+import api from "../utils/api";
+import { getLocalStorageItem } from '../utils/localstorage';
+import moment from 'moment';
 
 function Myhistory() {
+  const [history, setHistory] = useState();
 
-  const [parties, setParties] = useState(null);
-
-  // we will use async/awiat to fetch this data
+  // we will use async/await to fetch this data
   async function getData() {
-    const player = 'andria'
-    const response = await fetch(`https://api.quizz-game.andriacapai.com/v1/history/${player}`);
-    const data = await response.json();
-    console.log(reponse);
-    // store the data into our parties variables
-    setParties(data);
+    let player = getLocalStorageItem("nickname");
+
+    try {
+      const history = await api.get(`/history/${player}`);
+      console.log(history)
+      if (history.status === 200 || 304) {
+        if (history.data.data) {
+          console.log(history.data)
+          setHistory(history.data.data);
+        }
+      }
+    } catch (err) {
+      console.log(`Erreur lors de la requête : /history/${player}`);
+    }
   }
+
 
   //add the use
   useEffect(() => {
@@ -22,13 +33,22 @@ function Myhistory() {
 
   return (
     <div className="mainMyhistory">
-      {parties && (
-        <div className="parties">
-          {parties.map((partie, index) => (
-            <div key={index}>
-              <h2>{partie.name}</h2>
-            </div>
+      {history && (
+        <div className="tableContainer">
+          <p>Sélectionne ta partie pour voir son détail.</p>
+          <table>
+            <tbody>
+              {history.map((game, index) => (
+                <tr key={"item-" + (history.indexOf(game) + 1)}>
+                  <td>Game {history.indexOf(game) + 1}</td>
+                  <td>{ moment(game.createdAt).format('d/MM/YYYY - hh:mm') }</td>
+                  <td>{game.category.name}</td>
+                  <td>{game.score} pts</td>
+                </tr> 
           ))}
+            </tbody>
+          </table>
+          
 
         </div>
       )}

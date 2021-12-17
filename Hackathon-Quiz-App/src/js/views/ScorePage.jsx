@@ -7,7 +7,7 @@ import { updateRankings } from "../features/game/gameSlice";
 import "../../css/Score.css";
 import RankingTable from '../components/rankingTable';
 import { useNavigate,useLocation } from "react-router-dom";
-// import { getLocalStorageItem } from "../utils/localstorage";
+import { setLocalStorageItem } from '../utils/localstorage';
 
 
 
@@ -32,8 +32,8 @@ function ScorePage() {
     }, []);
     const handleSubmit = async (e) => {
       e.preventDefault();
-        // dispatch(login(nickname.toLowerCase()));
-      navigate("/historic", { state: { from: { pathname: from } } })
+      setLocalStorageItem(nickname, "nickname")
+      navigate("/history", { state: { from: { pathname: from } } })
     };
 
     async function fetchRankings(cat = 'total', avg = false) {
