@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // import { gameApi } from "../../services/gameApi";
 import { gameInfoModel } from "../../models/gameInfoModel";
 import {
+  getLocalStorageItem,
     removeLocalStorageItem,
   setLocalStorageItem,
 } from "../../utils/localstorage";
@@ -40,7 +41,45 @@ export const gameSlice = createSlice({
       }
       state.currentCategory = categoryChoosen;
       setLocalStorageItem(categoryChoosen, "currentCategory");
+
     },
+    modeChosen: (state,action) => {
+      console.log("dispatch")
+      console.log(state)
+      if (action.payload.gameModeId !=='' ){
+        let numQuestion = action.payload.questionId;
+        let modeId = action.payload.gameModeId;
+        // console.log('gameInfoModel',gameInfoModel)
+        // console.log(state.currentMode)
+        // state.gameInfo.game.history[numQuestion].questionId = numQuestion;
+        // state.gameInfo.game.history[numQuestion].gameModeId = modeId;
+  
+        let modeChoosen = '';
+        switch(action.payload.gameModeId){
+          case 1:
+            modeChoosen="Duo";
+            break
+          case 2:
+            modeChoosen="Carre";
+            break
+          default:
+            return
+        }
+        state.currentMode = modeChoosen;
+        console.log(state)
+
+        const gameInfo=getLocalStorageItem("gameInfo")
+        gameInfo.game.history[numQuestion].questionId = numQuestion
+        gameInfo.game.history[numQuestion].gameModeId = modeId
+        console.log("gameInfoLocalStorage",gameInfo)
+        setLocalStorageItem(gameInfo, "gameInfo");
+        setLocalStorageItem(modeChoosen, "currentMode");
+      } else {
+        return
+      }
+      
+    },
+
   },
   // extraReducers: (builder) => {
   //   builder
@@ -90,7 +129,7 @@ export const gameSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { leaveGame, categoryChosen } =
+export const { leaveGame, categoryChosen, modeChosen } =
   gameSlice.actions;
 
 export default gameSlice.reducer;
