@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "../../css/ChooseResponse.css";
-import { getLocalStorageItem } from "../utils/localstorage";
+import { getLocalStorageItem, setLocalStorageItem} from "../utils/localstorage";
 
 function ChooseResponse() {
   const [question, setQuestion] = useState("");
   const [numQuestion, setNumQuestion] = useState(1);
   const [reponse, setReponse] = useState([""]);
+  const [reponseChosen, setReponsChosen] = useState(null);
   const [modeQuestion, setModeQuestion] = useState(1);
 
-  const[responseJuste, setReponseJuste] = useState("")
+  const[responseJuste, setReponseJuste] = useState(null)
 
   async function getLocalStorageInfo() {
     let LocalStorageQuestionsFetched = getLocalStorageItem("questionsFetched");
@@ -24,9 +25,6 @@ function ChooseResponse() {
     await responsesPossibilities(LocalStorageGameInfo.game.history[numQuestion - 1].gameModeId,responses)
  
   }
-
-  async function updateDisplayedInfoQuestion() {}
-
 
   const responsesPossibilities =  async(mode, responses) => {
     if (mode === 1) {
@@ -55,12 +53,26 @@ function ChooseResponse() {
         allResponses[i] = responses[i]["content"];
       }
       console.log("res carre",allResponses)
-      setReponseJuste(reponseJuste[0].content)
+      console.log(reponseJuste[0])
+      setReponseJuste(reponseJuste[0])
       setReponse(allResponses)
     }
      
   };
   
+  const handleSubmitReponse = async(repChosen)=>{
+    console.log("repChosen",repChosen)
+    let gameInfo=getLocalStorageItem("gameInfo")
+        gameInfo.game.history[numQuestion-1].rightAnswer = responseJuste.content
+        console.log("gameInfoLocalStorage", responseJuste.content)
+        setLocalStorageItem(gameInfo, "gameInfo");
+    // navigate("/games/questions", { state: { from: { pathname: from } } })
+  }
+
+  
+  async function updateDisplayedInfoQuestion() {}
+
+
   const randomWrongAnswers = (items) => {
     return items[Math.floor(Math.random() * items.length)];
   };
@@ -84,10 +96,10 @@ function ChooseResponse() {
       {modeQuestion === 1 ? (
         <div className="responses">
           <div className="reponse">
-            <button className="btn-mode-response" onClick={() => {}}>
+            <button className="btn-mode-response" onClick={()=>handleSubmitReponse(reponse[0])}>
               {reponse[0]}
             </button>
-            <button className="btn-mode-response" onClick={() => {}}>
+            <button className="btn-mode-response" onClick={()=>handleSubmitReponse(reponse[1])}>
               {reponse[1]}
             </button>
           </div>
@@ -99,18 +111,18 @@ function ChooseResponse() {
       ) : (
         <div className="responses">
           <div className="reponse">
-            <button className="btn-mode-response" onClick={() => {}}>
+            <button className="btn-mode-response" onClick={()=>handleSubmitReponse(reponse[0])}>
               {reponse[0]}
             </button>
-            <button className="btn-mode-response" onClick={() => {}}>
+            <button className="btn-mode-response" onClick={()=>handleSubmitReponse(reponse[1])}>
               {reponse[1]}
             </button>
           </div>
           <div className="responseSuite">
-            <button className="btn-mode-response" onClick={() => {}}>
+            <button className="btn-mode-response" onClick={()=>handleSubmitReponse(reponse[2])}>
               {reponse[2]}
             </button>
-            <button className="btn-mode-response" onClick={() => {}}>
+            <button className="btn-mode-response" onClick={()=>handleSubmitReponse(reponse[3])}>
               {reponse[3]}
             </button>
           </div>
