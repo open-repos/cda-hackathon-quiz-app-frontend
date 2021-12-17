@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   gameInfo: gameInfoModel,
+  rankingInfo: null,
   currentCategory:null,
   currentMode:null,
   currentQuestion:null,
@@ -41,6 +42,10 @@ export const gameSlice = createSlice({
       state.currentCategory = categoryChoosen;
       setLocalStorageItem(categoryChoosen, "currentCategory");
     },
+    updateRankings: (state, action) => {
+      state.rankingInfo = action.payload;
+      setLocalStorageItem(state.rankingInfo, "rankingInfo");
+    }
   },
   // extraReducers: (builder) => {
   //   builder
@@ -90,7 +95,7 @@ export const gameSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { leaveGame, categoryChosen } =
+export const { leaveGame, categoryChosen, updateRankings } =
   gameSlice.actions;
 
 export default gameSlice.reducer;

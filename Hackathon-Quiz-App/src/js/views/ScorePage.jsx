@@ -1,24 +1,65 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import BackGroundThree from "../components/BackGroundThree"
 import Title from "../components/Title"
-import { useDispatch } from "react-redux";
+import api from "../utils/api";
+import { useDispatch, useSelector } from "react-redux";
+import { updateRankings } from "../features/game/gameSlice";
 import "../../css/Score.css";
+import RankingTable from '../components/rankingTable';
+import { useNavigate,useLocation } from "react-router-dom";
+// import { getLocalStorageItem } from "../utils/localstorage";
+
+
 
 function ScorePage() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    let location = useLocation();
+    let from = (location.state?.from?.pathname || location.pathname) ||"/";
+    const [catfetch, setCatfetch] = useState("");
+    const [scorefetch, setScorefetch] = useState("");
     const [nickname, setNickname] = useState("");
+    let rankingStore = useSelector((state) => state.game.rankingInfo);
+    let catChosen = '';
+    let scoreChosen = '';
+
+    useEffect(()=>{
+      fetchRankings(catfetch ? catfetch : 'total', scorefetch === 'avg' ? true : false);
+    }, [catfetch, scorefetch]);
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      // console.log("nickname.toLowerCase()", nickname.toLowerCase());
-      // console.log('location',location)
-      // console.log('from location', from)
-      // dispatch(login(nickname.toLowerCase()));
-      // navigate("/games", { state: { from: { pathname: from } } })
+        // dispatch(login(nickname.toLowerCase()));
+      navigate("/historic", { state: { from: { pathname: from } } })
     };
 
+    async function fetchRankings(cat = 'total', avg = false) {
+      try {
+        const rankings = await api.get(`/rankings/${cat}/${avg}`);
+        if (rankings.status === 200) {
+          console.log(rankings)
+          if (rankings.data.data) {
+            dispatch(updateRankings(rankings.data.data));
+            return rankings.data.data;
+          }
+        }
+      } catch (err) {
+        console.log(`Erreur lors de la requête : /rankings/${cat}/${avg}`);
+      }
+    }
+
+    const handleChange = (event, type) => {
+      if (type === 'category') {
+        setCatfetch(event.target.value)
+      } else if (type === 'score') {
+        setScorefetch(event.target.value)
+      }
+      
+      // await fetchRankings(catfetch ? catfetch : null, scorefetch === 'avg' ? true : false);
+    }
+    
     return (
-      <BackGroundThree>
+      <BackGroundThree onLoad={(e) => fetchRankings()}>
         <div className="grid-container">
           <div className="grid-child-left">
             <Title />
@@ -58,9 +99,24 @@ function ScorePage() {
                 <div className="line-2"></div>
               </div>
             </div>
-            {/* <div className="img-logo">
-              <img src={logo} alt="image-people" className="img-page-jouer" />
-            </div> */}
+            <div className="tableContainer">
+            <div className="tableOptions">
+              <select name="category" id="category-select" onChange={e => handleChange(e, 'category')}>
+                <option value="">--Category--</option>
+                <option value="total">Total</option>
+                <option value="front">Front-end</option>
+                <option value="back">Back-end</option>
+                <option value="devOps">DevOps</option>
+              </select>
+              <select name="score" id="score-select" onChange={e => handleChange(e, 'score')}>
+                <option value="">--Score--</option>
+                <option value="total">Score total</option>
+                <option value="avg">Score moyen</option>
+              </select>
+            </div>
+            
+            <RankingTable></RankingTable>
+            </div>
           </div>
         </div>
       </BackGroundThree>

@@ -118,6 +118,50 @@ div.rules-header>div.line-1{
     padding:3px 40px;
 }
 
+.tableContainer {
+  padding: 15% 20%;
+  height: 80%;
+}
+
+.tableContainer table {
+  border: 1px solid white;
+  border-radius: 16px;
+  padding: 10px 20px;
+}
+
+.tableContainer table>thead>tr>th, .tableContainer table>tbody>tr>td{
+  width: 200px;
+}
+
+td {
+  text-align: center;
+}
+
+.tableOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+select {
+  margin: 0;
+  padding-left: 10px;
+  box-sizing: border-box;
+  margin: 20px;
+  width: 150px;
+  height: 50px;
+  border-radius: 16px;
+  background-color: transparent;
+  display: inline-block;
+  line-height: 1.5em;
+  color: white;
+  border: 1px solid white;
+}
+
+select option {
+  color: black;
+}
+
 @media screen and (min-width: 780px) {
   img.img-accueil {
     width: 30rem;
