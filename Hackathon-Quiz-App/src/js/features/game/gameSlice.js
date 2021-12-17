@@ -51,6 +51,7 @@ export const gameSlice = createSlice({
     modeChosen: (state,action) => {
       console.log("dispatch")
       console.log(state)
+      console.log(action.payload)
       if (action.payload.gameModeId !=='' ){
         let numQuestion = action.payload.questionId;
         let modeId = action.payload.gameModeId;
