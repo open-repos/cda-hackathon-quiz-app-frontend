@@ -1,6 +1,7 @@
-.category{
+/* .category{
   display: flex;
-}
+  padding: 10px;
+} */
 
 .img-btn {
   display: flex;
@@ -13,11 +14,24 @@
 h2{
 justify-content: flex-start;
 } */
+@media screen and (max-width: 1150px) {
+  .category{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 1151px) {
+  .category{
+    display: flex;
+    padding: 10px;
+  }
+}
 
 .people {
   border-radius: 20px;
   border:2px solid #c4c4c4;
-  width: 255px;
-  height: 346px;
+  width: 14rem;
+  height: auto;
   margin-left: 20px;
 }
