@@ -1,0 +1,49 @@
+.content {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, #F52D7E 0%, #292D3E 4.91%, #292D3E 95.02%, #F52D7E 100%);
+}
+
+.img-logo-small {
+  transform: scale(0.7);
+}
+
+.grid-child-detail-left {
+  height: 80%;
+}
+.gameInfo {
+  border: 1px solid white;
+  border-radius: 16px;
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 10%;
+}
+
+.gameInfo div {
+  padding: 0 20px;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.gameInfo div:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.questionDetail {
+  padding: 0 20px;
+  border: 1px solid white;
+  width: 80%;
+  margin-bottom: 10px;
+  border-radius: 16px;
+}
+
+.gameDetails {
+  display: grid;
+  position: relative;
+  top: -50%;
+  height: 40%;
+  overflow-y: auto;
+}

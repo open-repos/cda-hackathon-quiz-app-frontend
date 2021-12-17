@@ -9,6 +9,7 @@ import { RequireAuth } from "./features/auth/requireAuth";
 import HomePage from "./views/HomePage";
 // import GamesPage from "./views/GamesPage";
 import HistoricPage from "./views/HistoricPage";
+import HistoricDetailsPage from "./views/HistoricDetailsPage";
 import ScorePage from "./views/ScorePage";
 // import NicknamePage from "./views/NicknamePage";
 import ChooseCategoryQuestion from "./views/ChooseCategoryQuestion";
@@ -52,6 +53,14 @@ function App() {
             element={
               <RequireAuth>
                 <HistoricPage />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/historyDetails"
+            element={
+              <RequireAuth>
+                <HistoricDetailsPage />
               </RequireAuth>
             }
           ></Route>
