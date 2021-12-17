@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import BackGroundThree from "../components/BackgroundThree"
+import BackGroundThree from "../components/BackGroundThree"
 import Title from "../components/Title"
 import api from "../utils/api";
 import { useDispatch, useSelector } from "react-redux";

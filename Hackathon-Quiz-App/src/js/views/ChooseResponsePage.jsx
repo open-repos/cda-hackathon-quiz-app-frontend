@@ -1,12 +1,12 @@
 import React from "react";
 
 import Title from "../components/Title";
-import BackgroundThree from "../components/BackgroundThree";
+import BackGroundThree from "../components/BackGroundThree";
 import ChooseResponse from "../components/ChooseResponse";
 
 function ChooseResponsePage() {
   return (
-    <BackgroundThree>
+    <BackGroundThree>
       <div className="container-el-response">
         <div className="title-lines">
           <div>
@@ -21,7 +21,7 @@ function ChooseResponsePage() {
           <ChooseResponse />
         </div>
       </div>
-    </BackgroundThree>
+    </BackGroundThree>
   );
 }
 

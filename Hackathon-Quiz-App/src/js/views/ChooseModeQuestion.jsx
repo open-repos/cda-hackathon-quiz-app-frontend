@@ -1,12 +1,12 @@
 import React from 'react'
-import BackgroundThree from "../components/BackgroundThree";
+import BackGroundThree from "../components/BackGroundThree";
 import "../../css/GamesPageBgThree.css";
 import Title from "../components/Title";
 import CarreDuo from "../components/CarreDuo";
 
 function ChooseModeQuestion() {
   return (
-    <BackgroundThree>
+    <BackGroundThree>
       <div className="container-el">
         <div className="title-lines">
           <div>
@@ -25,7 +25,7 @@ function ChooseModeQuestion() {
           <div className="line-2 gamesquestions"></div>
         </div>
       </div>
-    </BackgroundThree>
+    </BackGroundThree>
   )
 }
 

@@ -3,12 +3,12 @@ import React from "react";
 import "../../css/GamesPageBgThree.css";
 
 import Title from "../components/Title";
-import BackgroundThree from "../components/BackgroundThree";
+import BackGroundThree from "../components/BackGroundThree";
 import CategoryQuestion from "../components/CategoryQuestion";
 
 function ChooseCategoryQuestion() {
   return (
-    <BackgroundThree>
+    <BackGroundThree>
       <div className="container-el">
         <div className="title-lines">
           <div>
@@ -44,7 +44,7 @@ function ChooseCategoryQuestion() {
           </div>
         </div>
       // </div> */}
-    </BackgroundThree>
+    </BackGroundThree>
   );
 }
 
