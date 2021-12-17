@@ -1,0 +1,39 @@
+.resultat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .img-people {
+    /* margin-top: -70px; */
+    width: 20rem;
+    height: auto;
+  }
+  .img-resultat {
+    width: 10rem;
+    height: auto;
+  }
+  .pts {
+    margin-top: -20px;
+    font-size: 50px;
+    font-weight: regular;
+  }
+  
+  .btn-resultat {
+    background: #2a2e3f;
+    font-family: "IBM Plex Mono";
+    color: white;
+    text-transform: uppercase;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+    width: 260px;
+    padding: 5px;
+  }
+  
+  .p-resultat {
+    font-size: 21px;
+  }
+  
