@@ -10,14 +10,16 @@ export default class RankingTable extends React.Component {
 
   renderRows() {
     let rankingData = getLocalStorageItem("rankingInfo")
-    return rankingData.map(function(o) {
-      return <tr key={"item-" + (rankingData.indexOf(o) + 1)}>
-                <th scope="row">{rankingData.indexOf(o) + 1}</th>
-                <td>{o.nickname}</td>
-                <td>{o.score || '0'} pts</td>
-                <td>{o.count}</td>
-              </tr>
-    })
+    if (rankingData) {
+      return rankingData.map(function(o) {
+        return <tr key={"item-" + (rankingData.indexOf(o) + 1)}>
+                  <th scope="row">{rankingData.indexOf(o) + 1}</th>
+                  <td>{o.nickname}</td>
+                  <td>{o.score || '0'} pts</td>
+                  <td>{o.count}</td>
+                </tr>
+      })
+    }
   }
 
   render() {
