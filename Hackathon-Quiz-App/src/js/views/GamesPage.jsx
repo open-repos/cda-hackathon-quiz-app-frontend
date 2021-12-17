@@ -1,77 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React ,{useEffect, useState }from "react";
+import {useSelector } from "react-redux";
 import { tableauQuestions } from "../models/tableauQuestions";
-import { useDispatch, useSelector } from "react-redux";
-import { categoryChosen } from "../features/game/gameSlice";
-import api from "../utils/api";
 import { getLocalStorageItem } from "../utils/localstorage";
+import ChooseCategoryQuestion from "./ChooseCategoryQuestion";
+import ChooseNickname from "./ChooseNickname";
 
 function GamesPage() {
-  const dispatch = useDispatch();
-  const [category, setCategory] = useState("");
+ const [pageToDisplay, setpageToDisplay]= useState("")
   const gameStore = useSelector((state) => state.game);
-
-  async function fetchQuestions() {
-    let body = "";
-    console.log(
-      "getLocalStorageItem(currentCategory)",
-      getLocalStorageItem("currentCategory")
-    );
-    console.log("category:", category);
-    if (category !== "" && getLocalStorageItem("currentCategory") !== category) {
-      body = category;
-    } else if (
-      category === "" &&
-      (getLocalStorageItem("currentCategory") !== null ||
-        getLocalStorageItem("currentCategory") !== undefined)
-    ) {
-      body = getLocalStorageItem("currentCategory");
-    } else {
-      return;
-    }
-
-    console.log("body:", body);
-    try {
-      const result = await api.get(`/questions/${body}`);
-      if (result.status === 200) {
-        console.log(result);
-        if (result.data.data !== false) {
-          console.log(
-            "result.data.data[0].categoryId:",
-            result.data.data[0].categoryId
-          );
-          dispatch(categoryChosen(result.data.data[0].categoryId));
-        }
-      }
-    } catch (err) {
-      console.log(`Erreur lors de la requête : /questions/${body}`);
-    }
-  }
+  const authStore = useSelector((state) => state.auth);
 
   useEffect(() => {
-    fetchQuestions();
+    console.log("authStore:",authStore)
+    console.log("gameStore:",gameStore)
+    console.log("getLocalStorageItem('nickname'):",getLocalStorageItem("nickname"))
+    console.log("getLocalStorageItem('currentCategory'):",getLocalStorageItem("currentCategory"))
+    const player = getLocalStorageItem("nickname")
+    const cat = getLocalStorageItem("currentCategory")
+    console.log("nickname",player)
+    console.log("cat",cat)
+    if (player === "" || player === null ){
+      setpageToDisplay("Nickname")
+    } else if ( cat !== "" || cat !== null ){
+      setpageToDisplay("ChooseCatQuestions")
+    } else{
+
+    }
   }, []);
 
-  const handleChange = (event) => {
-    setCategory(event.target.value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    fetchQuestions();
-  };
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="text"
-          placeholder="Entrez la categorie"
-          value={category}
-          onChange={handleChange}
-        />
-        <button type="submit">Envoyer la requête</button>
-      </form>
+    <div style={{height:"100%"}}>
+    {(pageToDisplay === "Nickname")? <ChooseNickname /> : null }
+    {(pageToDisplay === "ChooseCatQuestions")? <ChooseCategoryQuestion /> : null }
     </div>
   );
 }

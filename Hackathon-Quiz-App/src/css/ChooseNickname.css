@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "MyFont";
+  src: local("MyFont"), url(../fonts/squids-game-font.otf) format("opentype");
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                                'embedded-opentype', and 'svg' */
+}
+
+.grid-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 0.7fr 1.3fr;
+  grid-gap: 20px;
+}
+
+.grid-child-right {
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-end;
+}
+.grid-child-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-end;
+  padding-bottom: 4rem;
+}
+
+.line-1 {
+  height: 1px;
+  background: white;
+  margin-top: -10px;
+  width: 40vw;
+}
+
+.line-2 {
+  height: 1px;
+  margin-top: 20px;
+  width: 20vw;
+  background: white;
+}
+
+.rules-header {
+  text-align: right;
+}
+
+div.rules-header > div.line-2 {
+  width: 40%;
+  margin-top: 20px;
+  margin-left: 60%;
+}
+div.rules-header > div.line-1 {
+  width: 70%;
+  margin-left: 30%;
+  margin-top: 10px;
+}
+
+.br {
+  display: block;
+  margin-bottom: -3rem;
+}
+
+.rules-btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: auto;
+}
+
+.btn-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn {
+  margin: 40px;
+  padding: 3px 40px;
+  height: 40px;
+  width: auto;
+}
+.inpt {
+  margin: 40px;
+  padding: 3px 40px;
+  height: 40px;
+  width: 250px;
+}
+
+@media screen and (min-width: 780px) {
+  img.img-page-jouer {
+    width: 30rem;
+    height: auto;
+    padding-left:20%;
+    padding-right:20px;
+    margin-bottom: -7%;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 779px) {
+  img.img-page-jouer {
+    width: 80%;
+    height: auto;
+    padding: 0 10%;
+  }
+}

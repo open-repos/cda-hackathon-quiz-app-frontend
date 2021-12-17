@@ -24,7 +24,7 @@ function HomePage() {
         <div className="rules-header">
           <div className="line-1"></div>
           <div className="rules-line">
-            <h2>Règles du jeu</h2>
+            <h2>Règles du jeux</h2>
             <div className="line-2"></div>
           </div>
         </div>
@@ -34,7 +34,7 @@ function HomePage() {
             <button
               className="btn"
               onClick={() =>
-                navigate("/enter-nickname", { state: { from: { pathname: "/home" } } })
+                navigate("/games", { state: { from: { pathname: "/home" } } })
               }
             >
               Commencer à jouer
