@@ -10,7 +10,7 @@ function ChooseResponse() {
   const [reponseChosen, setReponsChosen] = useState(null);
   const [modeQuestion, setModeQuestion] = useState(1);
 
-  const[responseJuste, setReponseJuste] = useState(null)
+  const[reponseJuste, setReponseJuste] = useState(null)
 
   async function getLocalStorageInfo() {
     let LocalStorageQuestionsFetched = getLocalStorageItem("questionsFetched");
@@ -45,16 +45,16 @@ function ChooseResponse() {
       setReponseJuste(reponseJuste[0].content)
       setReponse([reponseJusteContent, wrongAnswer])
     } else {
-      const reponseJuste = responses.filter(
-        (reponseJuste) => reponseJuste.trueOrFalse === true
+      const resJuste = responses.filter(
+        (resJuste) => resJuste.trueOrFalse === true
       );
       let allResponses = [];
       for ( let i = 0; i < responses.length; i++){
         allResponses[i] = responses[i]["content"];
       }
       console.log("res carre",allResponses)
-      console.log(reponseJuste[0])
-      setReponseJuste(reponseJuste[0])
+      console.log(resJuste[0])
+      setReponseJuste(resJuste[0])
       setReponse(allResponses)
     }
      
@@ -63,8 +63,8 @@ function ChooseResponse() {
   const handleSubmitReponse = async(repChosen)=>{
     console.log("repChosen",repChosen)
     let gameInfo=getLocalStorageItem("gameInfo")
-        gameInfo.game.history[numQuestion-1].rightAnswer = responseJuste.content
-        console.log("gameInfoLocalStorage", responseJuste.content)
+        gameInfo.game.history[numQuestion-1].rightAnswer = reponseJuste.content
+        console.log("gameInfoLocalStorage", reponseJuste.content)
         setLocalStorageItem(gameInfo, "gameInfo");
     // navigate("/games/questions", { state: { from: { pathname: from } } })
   }
