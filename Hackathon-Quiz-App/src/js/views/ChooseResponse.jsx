@@ -3,7 +3,7 @@ import React from "react";
 import Title from "../components/Title";
 import BackgroundThree from "../components/BackgroundThree";
 import ChooseResponse from "../components/ChooseResponse";
-//
+
 function ChooseResponse() {
   return (
     <BackgroundThree>

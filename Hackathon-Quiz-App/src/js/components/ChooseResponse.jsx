@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/ChooseResponse.css";
-//
+
 function ChooseResponse() {
   return (
     <div>
