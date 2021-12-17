@@ -5,6 +5,8 @@ import Title from "../components/Title"
 import "../../css/HistoricPage.css"
 
 function HistoricPage() {
+    // const data = useGetHistoryQuery('Nassim')
+    // console.log(data)
     return (
         <div>
             <Title />
