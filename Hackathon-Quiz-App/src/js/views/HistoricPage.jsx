@@ -3,7 +3,7 @@ import React from 'react'
 import Myhistory from "../components/Myhistory"
 import Title from "../components/Title"
 import "../../css/HistoricPage.css"
-import BackGroundThree from "../components/BackGroundThree"
+import BackGroundThree from "../components/BackgroundThree"
 
 function HistoricPage() {
     // const data = useGetHistoryQuery('Nassim')
