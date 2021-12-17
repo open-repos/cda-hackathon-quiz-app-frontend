@@ -8,7 +8,7 @@ function HistoricPage() {
     // const data = useGetHistoryQuery('Nassim')
     // console.log(data)
     return (
-        <div>
+        <div className="content">
             <Title />
             <Myhistoric />
         </div>
