@@ -3,6 +3,8 @@ import React from "react";
 import Title from "../components/Title";
 import BackGroundThree from "../components/BackGroundThree";
 import ChooseResponse from "../components/ChooseResponse";
+import "../../css/ChooseResponse.css"
+import "../../css/GamesPageBgThree.css";
 
 function ChooseResponsePage() {
   return (
