@@ -5,7 +5,7 @@ import { useNavigate,useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { categoryChosen } from "../features/game/gameSlice";
 import api from "../utils/api";
-import { getLocalStorageItem } from "../utils/localstorage";
+import { getLocalStorageItem, setLocalStorageItem } from "../utils/localstorage";
 
 function CategoryQuestion() {
   const dispatch = useDispatch();
@@ -104,6 +104,7 @@ function CategoryQuestion() {
             result.data.data[0].categoryId
           );
           dispatch(categoryChosen(result.data.data[0].categoryId));
+          setLocalStorageItem(result.data.data,"questionsFetched")
         }
       }
     } catch (err) {
@@ -114,7 +115,7 @@ function CategoryQuestion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     fetchQuestions();
-    navigate("/games/questions", { state: { from: { pathname: from } } })
+    navigate("/games/choose-mode", { state: { from: { pathname: from } } })
   };
 
   useEffect(() => {
