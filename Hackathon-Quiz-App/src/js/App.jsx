@@ -12,6 +12,7 @@ import HistoricPage from "./views/HistoricPage";
 import ScorePage from "./views/ScorePage";
 // import NicknamePage from "./views/NicknamePage";
 import ChooseCategoryQuestion from "./views/ChooseCategoryQuestion";
+import ChooseResponsePage from "./views/ChooseResponsePage";
 import ChooseNickname from "./views/ChooseNickname";
 import ChooseModeQuestion from "./views/ChooseModeQuestion";
 
@@ -36,7 +37,7 @@ function App() {
               element={<RequireAuth><ChooseCategoryQuestion /></RequireAuth>}
             ></Route>
             <Route path="/games/choose-mode" element={<RequireAuth><ChooseModeQuestion /></RequireAuth>}></Route>
-
+            <Route path="/games/questions" element={<RequireAuth><ChooseResponsePage /></RequireAuth>}></Route>
           {/* </Route> */}
           <Route
             path="/score"

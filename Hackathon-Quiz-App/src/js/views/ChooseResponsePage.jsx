@@ -4,7 +4,7 @@ import Title from "../components/Title";
 import BackgroundThree from "../components/BackgroundThree";
 import ChooseResponse from "../components/ChooseResponse";
 
-function ChooseResponse() {
+function ChooseResponsePage() {
   return (
     <BackgroundThree>
       <div className="container-el">
@@ -29,4 +29,4 @@ function ChooseResponse() {
   );
 }
 
-export default ChooseResponse;
+export default ChooseResponsePage;
