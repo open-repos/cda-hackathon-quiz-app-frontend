@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import BackGroundThree from "../components/BackGroundThree"
+import BackGroundThree from "../components/BackgroundThree"
 import Title from "../components/Title"
 import api from "../utils/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,6 +27,9 @@ function ScorePage() {
       fetchRankings(catfetch ? catfetch : 'total', scorefetch === 'avg' ? true : false);
     }, [catfetch, scorefetch]);
 
+    useEffect(()=>{
+      fetchRankings();
+    }, []);
     const handleSubmit = async (e) => {
       e.preventDefault();
         // dispatch(login(nickname.toLowerCase()));
