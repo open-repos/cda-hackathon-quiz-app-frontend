@@ -11,6 +11,7 @@ import GamesPage from "./views/GamesPage";
 import HistoricPage from "./views/HistoricPage";
 import ScorePage from "./views/ScorePage";
 import NicknamePage from "./views/NicknamePage";
+import ChooseResponse from "./views/ChooseResponse";
 
 
 function App() {
