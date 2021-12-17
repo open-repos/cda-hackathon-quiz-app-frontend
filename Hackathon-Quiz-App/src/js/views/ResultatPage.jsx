@@ -6,7 +6,7 @@ import Title from "../components/Title";
 import BackgroundResultat from "../components/BackgroundResultat";
 import Resultat from "../components/Resultat";
 
-function Resultat() {
+function ResultatPage() {
   return (
     <BackgroundResultat>
       <div className="container-el">
@@ -31,4 +31,4 @@ function Resultat() {
   );
 }
 
-export default Resultat;
+export default ResultatPage;

@@ -1,5 +1,3 @@
-BackgroundResultat.jsx
-
 import React from 'react'
 
 function BackGroundResultat({children}) {

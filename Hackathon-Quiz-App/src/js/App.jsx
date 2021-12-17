@@ -13,9 +13,9 @@ import ScorePage from "./views/ScorePage";
 // import NicknamePage from "./views/NicknamePage";
 import ChooseCategoryQuestion from "./views/ChooseCategoryQuestion";
 import ChooseNickname from "./views/ChooseNickname";
+import ResultatPage from "./views/ResultatPage";
 
 function App() {
-
   return (
     <div>
       <header></header>
@@ -29,13 +29,32 @@ function App() {
             element={<Navigate replace to="/games/nickname" />}
           > */}
 
-            <Route path="/games/nickname" element={<ChooseNickname />}></Route>
-            <Route
-              path="/games/choose-category"
-              element={<RequireAuth><ChooseCategoryQuestion /></RequireAuth>}
-            ></Route>
-            <Route path="/games/questions" element={<RequireAuth><p>Question 1</p></RequireAuth>}></Route>
+          <Route path="/games/nickname" element={<ChooseNickname />}></Route>
+          <Route
+            path="/games/choose-category"
+            element={
+              <RequireAuth>
+                <ChooseCategoryQuestion />
+              </RequireAuth>
+            }
+          ></Route>
 
+          <Route
+            path="/games/questions"
+            element={
+              <RequireAuth>
+                <p>Question 1</p>
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/games/resultat"
+            element={
+              <RequireAuth>
+                <ResultatPage />
+              </RequireAuth>
+            }
+          ></Route>
           {/* </Route> */}
           <Route
             path="/score"
@@ -53,7 +72,10 @@ function App() {
               </RequireAuth>
             }
           ></Route>
-          <Route path="/games" element={<Navigate replace to="/games/nickname" />} />
+          <Route
+            path="/games"
+            element={<Navigate replace to="/games/nickname" />}
+          />
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>
@@ -71,11 +93,15 @@ export const NotFound = () => {
     fontSize: "2rem",
     fontWeight: "800",
   };
-  const bgPage ={
-    height:"100vh",
-    width:"100vw",
-    background: "linear-gradient(157.89deg, #292D3E 62.84%, #F52D7E 92.29%)"
-  }
-  return(<div style={bgPage}><div style={style}>Not Page Found</div></div>);
+  const bgPage = {
+    height: "100vh",
+    width: "100vw",
+    background: "linear-gradient(157.89deg, #292D3E 62.84%, #F52D7E 92.29%)",
+  };
+  return (
+    <div style={bgPage}>
+      <div style={style}>Not Page Found</div>
+    </div>
+  );
 };
 export default App;
