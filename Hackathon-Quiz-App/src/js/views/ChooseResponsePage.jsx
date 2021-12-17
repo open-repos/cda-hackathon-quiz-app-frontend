@@ -7,7 +7,7 @@ import ChooseResponse from "../components/ChooseResponse";
 function ChooseResponsePage() {
   return (
     <BackgroundThree>
-      <div className="container-el">
+      <div className="container-el-response">
         <div className="title-lines">
           <div>
             <Title />
@@ -17,12 +17,8 @@ function ChooseResponsePage() {
             <div className="line-2 gamesquestions"></div>
           </div>
         </div>
-        <div className="categories">
+        <div className="reponses">
           <ChooseResponse />
-        </div>
-        <div className="lines-left gamesquestions">
-          <div className="line-1 gamesquestions"></div>
-          <div className="line-2 gamesquestions"></div>
         </div>
       </div>
     </BackgroundThree>

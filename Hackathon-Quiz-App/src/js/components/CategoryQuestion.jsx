@@ -103,7 +103,7 @@ function CategoryQuestion() {
             "result.data.data[0].categoryId:",
             result.data.data[0].categoryId
           );
-          dispatch(categoryChosen(result.data.data[0].categoryId));
+         await dispatch(categoryChosen(result.data.data[0].categoryId));
           setLocalStorageItem(result.data.data,"questionsFetched")
         }
       }

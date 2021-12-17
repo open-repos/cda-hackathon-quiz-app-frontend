@@ -56,13 +56,13 @@ function CarreDuo() {
 
     const handleSubmitModeDuo = async()=>{
       setNumCategory(1)
-      updateModeChosen()
+      await updateModeChosen(1)
       navigate("/games/questions", { state: { from: { pathname: from } } })
     }
 
     const handleSubmitModeCarre = async()=>{
       setNumCategory(2)
-      updateModeChosen()
+      await updateModeChosen(2)
       navigate("/games/questions", { state: { from: { pathname: from } } })
     }
 
@@ -73,10 +73,10 @@ function CarreDuo() {
      
     }
 
-    async function updateModeChosen(){
+    async function updateModeChosen(modeId){
       console.log("questionId:numQuestion-1",numQuestion-1)
       console.log("gameModeId",numCategory)
-       await dispatch(modeChosen({questionId:numQuestion-1,gameModeId:numCategory}))
+       await dispatch(modeChosen({questionId:numQuestion-1,gameModeId:modeId}))
     }
 
 
