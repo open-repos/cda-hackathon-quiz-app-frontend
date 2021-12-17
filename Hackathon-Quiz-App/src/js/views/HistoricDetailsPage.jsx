@@ -1,7 +1,7 @@
 import React from 'react'
 import Title from "../components/Title"
 import "../../css/HistoricPageDetails.css"
-import BackGroundThree from "../components/BackGroundThree"
+import BackGroundThree from "../components/BackgroundThree"
 import logo from "../../assets/img-people.png";
 import { getLocalStorageItem } from '../utils/localstorage';
 import moment from 'moment';
