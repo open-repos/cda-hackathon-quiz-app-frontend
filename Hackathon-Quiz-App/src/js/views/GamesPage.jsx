@@ -2,8 +2,8 @@ import React ,{useEffect, useState }from "react";
 import {useSelector } from "react-redux";
 import { tableauQuestions } from "../models/tableauQuestions";
 import { getLocalStorageItem } from "../utils/localstorage";
-import ChooseCategoryQuestion from "../components/ChooseCategoryQuestion";
-import ChooseNickname from "../components/ChooseNickname";
+import ChooseCategoryQuestion from "./ChooseCategoryQuestion";
+import ChooseNickname from "./ChooseNickname";
 
 function GamesPage() {
  const [pageToDisplay, setpageToDisplay]= useState("")

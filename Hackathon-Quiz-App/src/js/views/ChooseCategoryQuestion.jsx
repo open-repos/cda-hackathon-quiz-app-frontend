@@ -2,9 +2,9 @@ import React from "react";
 
 import "../../css/GamesPage.css";
 
-import Title from "./Title";
-import BackgroundThree from "./BackgroundThree";
-import CategoryQuestion from "./CategoryQuestion";
+import Title from "../components/Title";
+import BackgroundThree from "../components/BackgroundThree";
+import CategoryQuestion from "../components/CategoryQuestion";
 
 
 function ChooseCategoryQuestion() {

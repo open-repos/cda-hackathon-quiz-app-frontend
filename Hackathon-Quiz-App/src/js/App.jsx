@@ -7,11 +7,12 @@ import { RequireAuth } from "./features/auth/requireAuth";
 
 //Pages
 import HomePage from "./views/HomePage";
-import GamesPage from "./views/GamesPage";
+// import GamesPage from "./views/GamesPage";
 import HistoricPage from "./views/HistoricPage";
 import ScorePage from "./views/ScorePage";
 // import NicknamePage from "./views/NicknamePage";
-
+import ChooseCategoryQuestion from "./views/ChooseCategoryQuestion";
+import ChooseNickname from "./views/ChooseNickname";
 
 function App() {
 
@@ -23,12 +24,19 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<Navigate replace to="/home" />} />
           {/* <Route path="enter-nickname" element={<NicknamePage />}></Route> */}
-          <Route
+          {/* <Route
             path="/games"
-            element={
-                <GamesPage />
-            }
-          ></Route>
+            element={<Navigate replace to="/games/nickname" />}
+          > */}
+
+            <Route path="/games/nickname" element={<ChooseNickname />}></Route>
+            <Route
+              path="/games/choose-category"
+              element={<RequireAuth><ChooseCategoryQuestion /></RequireAuth>}
+            ></Route>
+            <Route path="/games/questions" element={<RequireAuth><p>Question 1</p></RequireAuth>}></Route>
+
+          {/* </Route> */}
           <Route
             path="/score"
             element={
@@ -38,13 +46,14 @@ function App() {
             }
           ></Route>
           <Route
-            path="/historic"
+            path="/history"
             element={
               <RequireAuth>
                 <HistoricPage />
               </RequireAuth>
             }
           ></Route>
+          <Route path="/games" element={<Navigate replace to="/games/nickname" />} />
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </main>

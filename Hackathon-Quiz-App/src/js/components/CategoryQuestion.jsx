@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import "../../css/CategoryQuestion.css";
 
-
+import { useNavigate,useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { categoryChosen } from "../features/game/gameSlice";
 import api from "../utils/api";
@@ -11,6 +11,11 @@ function CategoryQuestion() {
   const dispatch = useDispatch();
   const [category, setCategory] = useState("");
   const gameStore = useSelector((state) => state.game);
+
+  const navigate = useNavigate();
+  let location = useLocation();
+  let from = (location.state?.from?.pathname || location.pathname) ||"/";
+
 
   const [changeImageBack, setChangeImageBack] = useState(false);
   const [changeImageFront, setChangeImageFront] = useState(false);
@@ -109,6 +114,7 @@ function CategoryQuestion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     fetchQuestions();
+    navigate("/games/questions", { state: { from: { pathname: from } } })
   };
 
   useEffect(() => {
